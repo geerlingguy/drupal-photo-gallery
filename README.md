@@ -36,7 +36,7 @@ Or you can run one-off commands:
 
 ### Install site from existing configuration
 
-Install a fresh instance of the Acquia Photo Gallery site with the following drush command:
+Install a fresh instance of the Acquia Photo Gallery site with the following drush command (run it inside the Docker container using the `docker exec -it...` command in 'Running Drush commands'):
 
     drush site-install minimal -y \
       --site-name="Drupal Photo Gallery" \
