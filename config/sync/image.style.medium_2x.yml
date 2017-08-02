@@ -1,0 +1,23 @@
+uuid: bea3aec6-54c9-45ce-a967-55093842a059
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: medium_2x
+label: 'Medium 2x (440x400)'
+effects:
+  ae70e7cd-35e6-42a5-a3d1-9238eb519aa1:
+    uuid: ae70e7cd-35e6-42a5-a3d1-9238eb519aa1
+    id: image_scale
+    weight: -10
+    data:
+      width: 440
+      height: 400
+      upscale: false
+  fd4bc3f6-8c8c-485c-aab8-72a6dc4b36ae:
+    uuid: fd4bc3f6-8c8c-485c-aab8-72a6dc4b36ae
+    id: image_effects_auto_orient
+    weight: -9
+    data:
+      scan_exif: false

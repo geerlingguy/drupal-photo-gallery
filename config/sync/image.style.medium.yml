@@ -1,0 +1,25 @@
+uuid: aa6150c5-f8c9-4258-98a5-b1773628c37e
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+_core:
+  default_config_hash: Y9NmnZHQq20ASSyTNA6JnwtWrJJiSajOehGDtmUFdM0
+name: medium
+label: 'Medium (220×200)'
+effects:
+  bddf0d06-42f9-4c75-a700-a33cafa25ea0:
+    uuid: bddf0d06-42f9-4c75-a700-a33cafa25ea0
+    id: image_scale
+    weight: -10
+    data:
+      width: 220
+      height: 200
+      upscale: false
+  90714d8c-284d-44e6-a969-83d974c42ede:
+    uuid: 90714d8c-284d-44e6-a969-83d974c42ede
+    id: image_effects_auto_orient
+    weight: -9
+    data:
+      scan_exif: false

@@ -1,0 +1,28 @@
+uuid: b5ebb9e0-25fa-46c5-9a81-d1ee4394a093
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_face
+    - media_entity.bundle.image
+    - node.type.face_uuid
+id: media.image.field_face
+field_name: field_face
+entity_type: media
+bundle: image
+label: Faces
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      face_uuid: face_uuid
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

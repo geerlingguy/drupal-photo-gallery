@@ -1,0 +1,80 @@
+uuid: d9af7cd8-2826-42c0-992c-f7e7e39f3928
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_camera_model
+    - field.field.media.image.field_description
+    - field.field.media.image.field_face
+    - field.field.media.image.field_image
+    - field.field.media.image.field_label
+    - media_entity.bundle.image
+    - responsive_image.styles.large
+  module:
+    - responsive_image
+    - text
+id: media.image.default
+targetEntityType: media
+bundle: image
+mode: default
+content:
+  field_camera_model:
+    type: string
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_face:
+    type: entity_reference_entity_view
+    weight: 5
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      responsive_image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+  field_label:
+    weight: 6
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  uid:
+    type: entity_reference_label
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  thumbnail: true

@@ -1,0 +1,10 @@
+uuid: 62d380c2-6b21-4d4a-a06b-59d6c314a7a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity
+id: media.mini_teaser
+label: 'Mini Teaser'
+targetEntityType: media
+cache: true

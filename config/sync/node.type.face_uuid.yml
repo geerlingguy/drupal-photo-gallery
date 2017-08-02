@@ -1,0 +1,17 @@
+uuid: 22cecc43-ba41-4aba-b41d-b66b7a02e0d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Face UUID'
+type: face_uuid
+description: 'An instance of a face in a media entity.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

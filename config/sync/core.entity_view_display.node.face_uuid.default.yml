@@ -1,0 +1,24 @@
+uuid: 7c5b7062-f4c1-495c-a2a1-309e4baed518
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.face_uuid.field_name
+    - node.type.face_uuid
+  module:
+    - user
+id: node.face_uuid.default
+targetEntityType: node
+bundle: face_uuid
+mode: default
+content:
+  field_name:
+    weight: 0
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  links: true

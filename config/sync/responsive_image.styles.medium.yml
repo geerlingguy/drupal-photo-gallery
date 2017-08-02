@@ -1,0 +1,24 @@
+uuid: ff7f0797-5516-42b4-90b7-babf3e394968
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.medium
+    - image.style.medium_2x
+  theme:
+    - jeffgpix
+id: medium
+label: Medium
+image_style_mappings:
+  -
+    breakpoint_id: jeffgpix.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: medium
+  -
+    breakpoint_id: jeffgpix.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: medium_2x
+breakpoint_group: jeffgpix
+fallback_image_style: medium

@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+
+  drupal-vm:
+    build: .
+    container_name: drupal-photo-gallery-local
+    ports:
+      - 80:80
+      - 443:443
+      - 3306:3306
+      - 8025:8025
+    dns:
+      - '8.8.8.8'
+      - '8.8.4.4'
+    privileged: true
+    volumes:
+      - .:/var/www/drupalvm/drupal:rw,cached
+    command: /lib/systemd/systemd
+    networks:
+      drupalvm:
+        ipv4_address: 192.168.88.23
+
+networks:
+
+  drupalvm:
+    driver: bridge
+    driver_opts:
+      ip: 192.168.88.1
+    ipam:
+      config:
+        - subnet: "192.168.88.0/16"

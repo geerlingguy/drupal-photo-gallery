@@ -1,0 +1,19 @@
+uuid: 7dd5c24d-7565-4db6-9d32-1550ad4557e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_camera_model
+    - media_entity.bundle.image
+id: media.image.field_camera_model
+field_name: field_camera_model
+entity_type: media
+bundle: image
+label: 'Camera Model'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

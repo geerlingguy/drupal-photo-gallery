@@ -1,0 +1,25 @@
+uuid: bbce78e7-c4fd-4fda-9f92-42d3aa4e656f
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+_core:
+  default_config_hash: J2n0RpFzS0-bgSyxjs6rSdgxB1rb-bTAgqywNx_964M
+name: large
+label: 'Large (960x600)'
+effects:
+  ddd73aa7-4bd6-4c85-b600-bdf2b1628d1d:
+    uuid: ddd73aa7-4bd6-4c85-b600-bdf2b1628d1d
+    id: image_scale
+    weight: 0
+    data:
+      width: 960
+      height: 600
+      upscale: false
+  166f7de4-75b6-4353-8628-2018c0063561:
+    uuid: 166f7de4-75b6-4353-8628-2018c0063561
+    id: image_effects_auto_orient
+    weight: 2
+    data:
+      scan_exif: false

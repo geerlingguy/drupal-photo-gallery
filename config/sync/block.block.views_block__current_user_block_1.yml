@@ -1,0 +1,24 @@
+uuid: d7f33412-9def-4592-a2e7-3b1daa36b479
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.current_user
+  module:
+    - views
+  theme:
+    - jeffgpix
+id: views_block__current_user_block_1
+theme: jeffgpix
+region: footer
+weight: -5
+provider: null
+plugin: 'views_block:current_user-block_1'
+settings:
+  id: 'views_block:current_user-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility: {  }

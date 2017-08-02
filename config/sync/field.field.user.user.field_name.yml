@@ -1,0 +1,20 @@
+uuid: 1d2d71f8-3a92-4a4d-9658-9862489de576
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_name
+  module:
+    - user
+id: user.user.field_name
+field_name: field_name
+entity_type: user
+bundle: user
+label: Name
+description: 'Enter your full name (e.g. <em>John Doe</em>).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

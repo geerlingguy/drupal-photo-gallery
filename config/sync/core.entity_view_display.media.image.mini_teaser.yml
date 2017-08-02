@@ -1,0 +1,37 @@
+uuid: a091fc16-c5fd-4203-b157-fc22ebc5224c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.mini_teaser
+    - field.field.media.image.field_camera_model
+    - field.field.media.image.field_description
+    - field.field.media.image.field_face
+    - field.field.media.image.field_image
+    - media_entity.bundle.image
+    - responsive_image.styles.thumbnail
+  module:
+    - responsive_image
+id: media.image.mini_teaser
+targetEntityType: media
+bundle: image
+mode: mini_teaser
+content:
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      responsive_image_style: thumbnail
+      image_link: content
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+hidden:
+  created: true
+  field_camera_model: true
+  field_description: true
+  field_face: true
+  field_label: true
+  name: true
+  thumbnail: true
+  uid: true

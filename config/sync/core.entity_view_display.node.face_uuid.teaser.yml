@@ -1,0 +1,25 @@
+uuid: 692c3204-965a-4a27-9eaf-04088d2fb963
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.face_uuid.field_name
+    - node.type.face_uuid
+  module:
+    - user
+id: node.face_uuid.teaser
+targetEntityType: node
+bundle: face_uuid
+mode: teaser
+content:
+  field_name:
+    type: entity_reference_label
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+hidden:
+  links: true

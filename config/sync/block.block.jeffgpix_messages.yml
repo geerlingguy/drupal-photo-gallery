@@ -1,0 +1,22 @@
+uuid: 1dd6cc73-149b-4fcf-8b2b-09340865ecae
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - jeffgpix
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: jeffgpix_messages
+theme: jeffgpix
+region: highlighted
+weight: -4
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

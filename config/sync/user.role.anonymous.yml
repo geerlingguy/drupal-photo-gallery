@@ -1,0 +1,14 @@
+uuid: cb117d5c-6238-4b0f-9388-6ed016e3c8a7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access site-wide contact form'
+  - 'generate lorem ipsum'
+  - 'search content'

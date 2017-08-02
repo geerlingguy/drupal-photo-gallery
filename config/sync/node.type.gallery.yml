@@ -1,0 +1,17 @@
+uuid: 8f6abf00-cbcb-4078-a0f0-403cbc97e01c
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Gallery
+type: gallery
+description: 'A gallery for a collection of photos.'
+help: 'You can also <a href="/media/add/video_clip">add a video clip</a> or <a href="/media/add/audio_clip">add an audio clip</a>.'
+new_revision: false
+preview_mode: 0
+display_submitted: true

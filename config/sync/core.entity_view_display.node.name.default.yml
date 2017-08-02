@@ -1,0 +1,15 @@
+uuid: ea5fe4c0-32ce-4e5e-bc32-71ca9962f44f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.name
+  module:
+    - user
+id: node.name.default
+targetEntityType: node
+bundle: name
+mode: default
+content: {  }
+hidden:
+  links: true

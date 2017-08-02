@@ -1,0 +1,34 @@
+uuid: 054cad71-cf7f-4750-96fe-12a776aa975a
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.large
+    - image.style.large_2x
+  theme:
+    - jeffgpix
+id: large
+label: Large
+image_style_mappings:
+  -
+    breakpoint_id: jeffgpix.large
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large
+  -
+    breakpoint_id: jeffgpix.large
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: large_2x
+  -
+    breakpoint_id: jeffgpix.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large
+  -
+    breakpoint_id: jeffgpix.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: large
+breakpoint_group: jeffgpix
+fallback_image_style: large

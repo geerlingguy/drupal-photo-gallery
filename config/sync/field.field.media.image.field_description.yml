@@ -1,0 +1,22 @@
+uuid: 22363013-df0f-46be-aaf4-ab12313e035b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_description
+    - media_entity.bundle.image
+  module:
+    - text
+id: media.image.field_description
+field_name: field_description
+entity_type: media
+bundle: image
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

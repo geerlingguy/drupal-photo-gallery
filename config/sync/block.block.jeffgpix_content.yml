@@ -1,0 +1,22 @@
+uuid: 021a024b-558f-4d02-9546-bb5f33aec335
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - jeffgpix
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: jeffgpix_content
+theme: jeffgpix
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

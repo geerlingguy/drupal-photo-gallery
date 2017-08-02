@@ -1,0 +1,22 @@
+uuid: abac809f-97ab-4e48-b026-a1a0bca81aeb
+langcode: en
+status: true
+dependencies:
+  theme:
+    - jeffgpix
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: jeffgpix_local_tasks
+theme: jeffgpix
+region: content
+weight: -1
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

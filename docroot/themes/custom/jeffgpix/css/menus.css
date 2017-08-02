@@ -1,0 +1,127 @@
+/**
+ * @file
+ * Menu styling for Jeffgpix theme.
+ */
+
+a {
+  transition: all 0.12s ease;
+}
+
+.user-anonymous .navigation {
+  display: none;
+}
+
+/* Global menu styling */
+ul.menu {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+ul.menu li {
+  display: inline;
+  margin: 0;
+  padding: 0 5px 0 0;
+  list-style-type: none;
+}
+
+/* Main navigation */
+ul.menu-main {
+  margin-top: 10px;
+}
+ul.menu-main li a {
+  color: #000;
+  background-color: transparent;
+  border-radius: 1.5em;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 15px 4px;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+ul.menu-main li a.is-active,
+ul.menu-main li a:hover {
+  color: #fff;
+  background-color: #00e;
+}
+ul.menu-main .add-gallery-link {
+  background-color: rgba(0, 136, 0, 0.1);
+}
+ul.menu-main .add-gallery-link:before {
+  content: "+";
+  padding: 0 5px 0 0;
+}
+ul.menu-main .add-gallery-link.is-active,
+ul.menu-main .add-gallery-link:hover {
+  background-color: #080;
+}
+@media screen and (max-width: 600px) {
+  ul.menu-main .add-gallery-link {
+    display: none;
+  }
+}
+
+/* User menu */
+ul.menu-account {
+  margin-top: 10px;
+}
+ul.menu-account li:before {
+  color: #eee;
+  content:'\2665';
+  padding-right: 5px;
+}
+ul.menu-account li:last-child {
+  padding-right: 0;
+}
+ul.menu-account li:first-child:before {
+  content: '';
+}
+
+/* Local tasks */
+.tabs a {
+  display: inherit;
+}
+.local-tasks {
+  text-align: center;
+}
+.local-tasks ul {
+  margin: 0 0 5px;
+  padding: 0 0 6px;
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+}
+.local-tasks ul li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.local-tasks ul li a {
+  color: #555;
+  line-height: 16px;
+  padding: 8px 14px;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+}
+.local-tasks ul li a.is-active,
+.local-tasks ul li a:hover {
+  color: #00e;
+  border-bottom: 2px solid #00e;
+  background-color: inherit;
+}
+@media screen and (max-width: 480px) {
+  .local-tasks ul li a {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .local-tasks ul li a {
+    font-size: 10px;
+  }
+}
+
+/* Node links */
+.node__links ul li {
+  margin-left: 0;
+  padding: 0 20px 0 0;
+}

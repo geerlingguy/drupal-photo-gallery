@@ -1,0 +1,22 @@
+uuid: 363842d3-dd53-401b-afeb-f41e3d86f635
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: thumbnail_2x
+label: 'Thumbnail 2x (160x160)'
+effects:
+  cb719cef-9733-47df-a586-ab6c328448fb:
+    uuid: cb719cef-9733-47df-a586-ab6c328448fb
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 160
+      height: 160
+  e4f5dcdf-8059-47bd-be8e-bf8ceb22eb49:
+    uuid: e4f5dcdf-8059-47bd-be8e-bf8ceb22eb49
+    id: image_effects_auto_orient
+    weight: 2
+    data:
+      scan_exif: false

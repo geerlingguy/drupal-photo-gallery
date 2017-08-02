@@ -1,0 +1,18 @@
+uuid: 631ecf58-e713-4cac-9803-4d3606c35290
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity_image
+id: image
+label: Image
+description: 'Images for display in Photo Galleries'
+type: image
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration:
+  source_field: field_image
+  gather_exif: true
+field_map:
+  model: field_camera_model
+  created: created

@@ -1,0 +1,204 @@
+/**
+ * @file
+ * Gallery styles for Jeffgpix theme.
+ */
+
+/* Gallery page */
+.node--type-gallery.node--view-mode-full .field--name-body {
+  margin: 20px 0 0;
+}
+.node--type-gallery .field--name-field-images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.media-image.view-mode-teaser .field--name-field-image {
+  display: inline-block;
+  width: 220px;
+  padding: 0 10px 20px;
+  text-align: center;
+}
+.media-image.view-mode-teaser .field--name-field-image img {
+  vertical-align: top;
+}
+@media screen and (max-width: 520px) {
+  .node--type-gallery .field--name-field-images .field__item {
+    width: 100%;
+  }
+  .media-image.view-mode-teaser .field--name-field-image {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .media-image.view-mode-teaser .field--name-field-image img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Gallery teaser and listing */
+.path-frontpage h1.page-title {
+  display: none;
+}
+.view-galleries > .view-content {
+  margin-top: -20px;
+}
+.view-galleries > .view-content > .views-row {
+  width: 48%;
+  padding-right: 1%;
+  display: inline-block;
+  vertical-align: top;
+}
+.node--type-gallery.node--view-mode-teaser {
+  margin-bottom: 40px;
+}
+.view-gallery-images {
+  max-width: 360px;
+}
+.view-gallery-images > .view-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.node--type-gallery.node--view-mode-teaser h2 {
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 0;
+}
+.node--type-gallery.node--view-mode-teaser .field--name-body {
+  margin: 0 0 20px;
+}
+.view-gallery-images .view-mode-mini-teaser .field--name-field-image {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  padding: 0 10px 10px 0;
+  text-align: center;
+}
+.view-gallery-images .view-mode-mini-teaser .field--name-field-image img {
+  vertical-align: middle;
+}
+.image-count {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+@media screen and (max-width: 800px) {
+  .view-galleries > .view-content {
+    margin-top: 0;
+  }
+  .view-galleries > .view-content > .views-row {
+    width: 100%;
+    padding-right: 0;
+    display: block;
+  }
+  .view-gallery-images {
+    max-width: 100%;
+  }
+  .view-gallery-images .view-mode-mini-teaser .field--name-field-image {
+    padding: 0 1px 1px 0;
+  }
+}
+
+/* People Search */
+.view-people-search > .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.view-people-search .view-header {
+  color: #999;
+  text-align: center;
+}
+.view-people-search select#edit-names {
+  width: 220px;
+}
+
+/* Image page */
+.media-image.view-mode-full {
+  text-align: center;
+}
+.field--name-field-label .field__item {
+  display: inline-block;
+}
+.field--name-field-label .field__item:after {
+  content: ",";
+}
+.field--name-field-label .field__item:last-child:after {
+  content: none;
+}
+.field--name-uid,
+.field--name-field-camera-model {
+  display: inline;
+}
+.field--name-field-description {
+  text-align: left;
+}
+.names .field:after {
+  content: ",";
+}
+.names .field:last-child:after {
+  content: "";
+}
+@media screen and (max-width: 1100px) {
+  .media-image.view-mode-full img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Image gallery pager */
+.content-pager-links ul {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 5px;
+}
+.content-pager-links ul li {
+  margin: 0;
+  list-style-type: none;
+}
+.content-pager-links ul li a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: inline-block;
+  width: 400px;
+}
+.content-pager-links ul li a:hover {
+  text-decoration: underline;
+}
+.content-pager-links ul li.previous {
+  float: left;
+}
+.content-pager-links ul li.previous a {
+  padding-left: 0;
+  text-align: left;
+}
+.content-pager-links ul li.next a {
+  padding-right: 0;
+  text-align: right;
+}
+.content-pager-links ul li.next {
+  float: right;
+}
+.content-pager-links ul li.previous:before,
+.content-pager-links ul li.next:after {
+  content: "\002B05";
+  display: inline-block;
+  vertical-align: middle;
+  margin: -2px 5px 0 0;
+}
+.content-pager-links ul li.next:after {
+  content: "\0027A1";
+  margin-right: 0;
+  margin-left: 5px;
+}
+@media screen and (max-width: 960px) {
+  .content-pager-links ul li a {
+    width: auto;
+  }
+}

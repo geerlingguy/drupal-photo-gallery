@@ -1,0 +1,8 @@
+name: JeffGPix
+type: theme
+base theme: classy
+description: 'Builds on top of the D8 core Classy theme.'
+version: '8.0.0'
+core: '8.x'
+libraries:
+  - jeffgpix/base

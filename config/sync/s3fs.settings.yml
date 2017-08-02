@@ -1,0 +1,23 @@
+access_key: ''
+secret_key: ''
+use_instance_profile: false
+default_cache_config: ''
+bucket: drupal-8-photo-gallery
+region: us-east-1
+use_cname: false
+use_customhost: false
+hostname: ''
+domain: ''
+cache_control_header: ''
+encryption: ''
+use_https: false
+ignore_cache: false
+no_rewrite_cssjs: false
+root_folder: ''
+public_folder: ''
+private_folder: ''
+presigned_urls: ''
+saveas: ''
+torrents: ''
+_core:
+  default_config_hash: AFfSm52GJ9rsO6Yf443h1qoneah-gQg5s1owgEmq-S4

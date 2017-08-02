@@ -1,0 +1,9 @@
+display_denied_message: false
+access_denied_message: 'You must log in to view this site.'
+access_denied_message_type: error
+redirect_authenticated_users_to: ''
+user_login_path: /user/login
+default_redirect_code: 302
+match_noredirect_pages: ''
+_core:
+  default_config_hash: '-1ZIdfQLvs6psCwwGG3c78TfK9qOfyglvkkGmCr5j_M'

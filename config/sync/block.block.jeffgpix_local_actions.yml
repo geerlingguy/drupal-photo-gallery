@@ -1,0 +1,20 @@
+uuid: aeaa8d61-9a41-4d94-98ac-f57ae9aec7d7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - jeffgpix
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: jeffgpix_local_actions
+theme: jeffgpix
+region: content
+weight: -2
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

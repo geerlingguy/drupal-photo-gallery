@@ -1,0 +1,9 @@
+uuid: a1c3c821-42d9-44ef-acba-6a8d0a620390
+langcode: en
+status: true
+dependencies: {  }
+name: Labels
+vid: labels
+description: ''
+hierarchy: 0
+weight: 0

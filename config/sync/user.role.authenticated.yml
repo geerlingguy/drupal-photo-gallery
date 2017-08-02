@@ -1,0 +1,36 @@
+uuid: 6d62308a-498e-4791-97f3-e40746ebabc8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access image_browser entity browser pages'
+  - 'access in-place editing'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access user profiles'
+  - 'cancel account'
+  - 'create gallery content'
+  - 'create media'
+  - 'delete media'
+  - 'delete own gallery content'
+  - 'dropzone upload files'
+  - 'edit own comments'
+  - 'edit own gallery content'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'update media'
+  - 'use text format basic_html'
+  - 'use text format restricted_html'
+  - 'view gallery revisions'
+  - 'view media'
+  - 'view own unpublished content'
+  - 'view the administration theme'

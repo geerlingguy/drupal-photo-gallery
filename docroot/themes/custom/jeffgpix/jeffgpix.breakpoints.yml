@@ -1,0 +1,14 @@
+jeffgpix.small:
+  label: small
+  mediaQuery: '(min-width: 0px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+jeffgpix.large:
+  label: large
+  mediaQuery: 'all and (min-width: 800px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x

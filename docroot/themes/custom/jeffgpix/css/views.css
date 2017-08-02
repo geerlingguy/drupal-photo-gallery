@@ -1,0 +1,41 @@
+/**
+ * @file
+ * Views styles for JeffGPix theme.
+ */
+
+/* Views exposed forms */
+.views-exposed-form {
+  text-align: center;
+}
+.views-exposed-form .form-item,
+.views-exposed-form .form-actions {
+  display: inline-block;
+  float: none;
+  clear: none;
+  margin: 0;
+}
+.views-exposed-form .form-item input {
+  box-sizing: border-box;
+}
+.views-exposed-form .form-item {
+  text-align: center;
+  margin: 0 10px 10px 0;
+}
+.views-exposed-form .form-actions {
+  padding: 2px 0;
+}
+.views-exposed-form .form-item-title label {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  .views-exposed-form .form-item,
+  .views-exposed-form .form-item input,
+  .views-exposed-form .form-item select {
+    width: 100%;
+  }
+}
+
+/* Empty results */
+.view-empty {
+  text-align: center;
+}

@@ -1,0 +1,39 @@
+/**
+ * @file
+ * Resets for Jeffgpix theme.
+ */
+
+* {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, form, ul, ol, dl {
+  margin: 20px 0;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+main li,
+main ol {
+  margin-left: 40px;
+}
+blockquote {
+  margin-left: 40px;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-weight: bold;
+}

@@ -1,0 +1,32 @@
+/**
+ * @file
+ * Media styles for Jeffgpix theme.
+ */
+
+/* Clips listing */
+.view-audio-and-video-clips .form-item-type label {
+  display: none;
+}
+.view-audio-and-video-clips .form-item-type select {
+  width: 140px;
+}
+
+/* Clip pages */
+.media audio {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+.field--name-field-audio-file {
+  text-align: center;
+}
+.media video {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  max-height: 500px;
+  margin: 20px auto 0;
+}
+.field--name-field-video-file {
+  text-align: center;
+}

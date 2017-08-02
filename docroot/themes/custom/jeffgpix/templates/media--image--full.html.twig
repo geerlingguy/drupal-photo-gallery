@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a media entity.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+<article{{ attributes }}>
+  {% if content.pager %}
+    {{ content.pager }}
+  {% endif %}
+
+  {% if content.field_image %}
+    <a name="image"></a>
+    {% if content.next_link %}
+      <a href="{{ content.next_link }}" title="{% trans %}Click to see the next picture in gallery.{% endtrans %}">
+        {{ content.field_image }}
+      </a>
+    {% else %}
+      {{ content.field_image }}
+    {% endif %}
+  {% endif %}
+
+  {% if content.field_description %}
+    <div class="description">
+      {{ content.field_description }}
+    </div>
+  {% endif %}
+
+  <table>
+    <colgroup>
+      <col width="50%">
+      <col width="50%">
+    </colgroup>
+    <tbody class="line-top">
+      {% if content.field_face|render %}
+        <tr class="names">
+          <td class="align-right"><strong>{% trans %}People in this photo:{% endtrans %}</strong></td>
+          <td>{{ content.field_face }}</td>
+        </tr>
+      {% endif %}
+      {% if content.field_label|render %}
+        <tr class="labels">
+          <td class="align-right"><strong>{% trans %}Recognized labels:{% endtrans %}</strong></td>
+          <td>{{ content.field_label }}</td>
+        </tr>
+      {% endif %}
+      {% if content.gallery %}
+        <tr class="gallery-link">
+          <td class="align-right"><strong>{% trans %}Gallery:{% endtrans %}</strong></td>
+          <td>{{ content.gallery }}</td>
+        </tr>
+      {% endif %}
+      {% if content.uid %}
+        <tr>
+          <td class="align-right"><strong>{% trans %}Uploaded by:{% endtrans %}</strong></td>
+          <td>{{ content.uid }}</td>
+        </tr>
+      {% endif %}
+      {% if content.download %}
+        <tr class="download-link">
+          <td class="align-right"><strong>{% trans %}Original Image:{% endtrans %}</strong></td>
+          <td>{{ content.download }}</td>
+        </tr>
+      {% endif %}
+      {% if content.field_camera_model|render %}
+        <tr class="camera">
+          <td class="align-right"><strong>{% trans %}Shot with:{% endtrans %}</strong></td>
+          <td>{{ content.field_camera_model }}</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+</article>

@@ -1,0 +1,13 @@
+base:
+  version: 1.x
+  css:
+    theme:
+      css/reset.css: {}
+      css/general.css: {}
+      css/fonts.css: {}
+      css/tables.css: {}
+      css/forms.css: {}
+      css/menus.css: {}
+      css/views.css: {}
+      css/galleries.css: {}
+      css/media.css: {}

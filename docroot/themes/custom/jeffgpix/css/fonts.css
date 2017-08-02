@@ -1,0 +1,46 @@
+/**
+ * @file
+ * Font and text styles for Jeffgpix theme.
+ */
+
+html,
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Century Gothic", Helvetica, Arial, sans-serif;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 26px;
+  line-height: 30px;
+}
+h3 {
+  font-size: 20px;
+  line-height: 24px;
+}
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

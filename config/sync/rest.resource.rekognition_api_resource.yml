@@ -1,0 +1,18 @@
+uuid: f22732aa-2672-45ab-9cc4-3dd83214f429
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - rekognition_api
+    - serialization
+id: rekognition_api_resource
+plugin_id: rekognition_api_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - basic_auth

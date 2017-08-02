@@ -1,0 +1,24 @@
+uuid: 1feb7960-20a0-4442-8628-20f79ad5ccd7
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+_core:
+  default_config_hash: cCiWdBHgLwj5omG35lsKc4LkW4MBdmcctkVop4ol5x0
+name: thumbnail
+label: 'Thumbnail (80×80)'
+effects:
+  770c731c-e7d6-45e8-9cbf-a486ee4bc509:
+    uuid: 770c731c-e7d6-45e8-9cbf-a486ee4bc509
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 80
+      height: 80
+  c16b1f25-b306-408f-8742-2995d919cb13:
+    uuid: c16b1f25-b306-408f-8742-2995d919cb13
+    id: image_effects_auto_orient
+    weight: 2
+    data:
+      scan_exif: false

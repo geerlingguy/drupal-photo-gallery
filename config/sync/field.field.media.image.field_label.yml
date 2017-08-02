@@ -1,0 +1,28 @@
+uuid: ebe2c19c-9999-49b9-a578-dc7dc2e7f7f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_label
+    - media_entity.bundle.image
+    - taxonomy.vocabulary.labels
+id: media.image.field_label
+field_name: field_label
+entity_type: media
+bundle: image
+label: Labels
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      labels: labels
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

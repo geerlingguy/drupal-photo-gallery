@@ -1,0 +1,22 @@
+uuid: 3df0b569-192a-4a57-ae91-fc5a302fe8a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.gallery
+id: node.gallery.promote
+field_name: promote
+entity_type: node
+bundle: gallery
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: 13c87541-d3b7-4114-a32b-8429c0260d2c
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: large_2x
+label: 'Large 2x (1920x1200)'
+effects:
+  5033fa7f-2633-4301-a270-1dd80bbbe3e8:
+    uuid: 5033fa7f-2633-4301-a270-1dd80bbbe3e8
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: 1200
+      upscale: false
+  12e42c09-e528-4ed2-8e1d-c9367f16a670:
+    uuid: 12e42c09-e528-4ed2-8e1d-c9367f16a670
+    id: image_effects_auto_orient
+    weight: 2
+    data:
+      scan_exif: false

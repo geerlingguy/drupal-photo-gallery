@@ -1,0 +1,282 @@
+<?php
+
+/**
+ * @file
+ * Custom functionality for JeffGPix.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+use Drupal\Component\Utility\Tags;
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_form_alter().
+ */
+function custom_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  switch ($form_id) {
+    case 'views_exposed_form':
+      if ($form['#id'] == 'views-exposed-form-galleries-page-1') {
+        // Place title text inside placeholder.
+        $form['title']['#attributes'] = [
+          'placeholder' => t('Search Galleries by Title...'),
+        ];
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function custom_preprocess_node(&$variables) {
+  if ($variables['view_mode'] == 'teaser' && $variables['node']->getType() == 'gallery') {
+    $variables['image_count'] = count($variables['node']->field_images);
+  }
+}
+
+/**
+ * Implements hook_entity_view().
+ */
+function custom_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->bundle() == 'image' && $view_mode == 'full') {
+    // Add original image download link.
+    $build['download'] = _custom_image_download_link($entity);
+
+    // Get the Gallery to which this Image belongs.
+    $query = \Drupal::entityQuery('node');
+    $gallery = $query
+      ->condition('status', 1)
+      ->condition('type', 'gallery')
+      ->condition('field_images.entity.mid', $entity->id())
+      ->execute();
+
+    if (!empty($gallery)) {
+      // Get list of all Images referenced in the gallery.
+      $gallery = array_values($gallery);
+      $gallery = node_load($gallery[0]);
+      $gallery_images = array_column($gallery->field_images->getValue(), 'target_id');
+
+      // Add pager and gallery link.
+      $build['pager'] = _custom_image_gallery_pager($entity, $gallery_images);
+      $build['next_link'] = _custom_image_gallery_next_link($entity, $gallery_images);
+      $build['gallery'] = _custom_image_gallery_link($gallery);
+    }
+  }
+}
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function custom_user_format_name_alter(&$name, $account) {
+  // Load the full user account.
+  if ($account = \Drupal\user\Entity\User::load($account->id())) {
+    // Get the full name from field_name.
+    $full_name = $account->get('field_name')->value;
+    // If there's a value, set it as the new $name.
+    if (!empty($full_name)) {
+      $name = $full_name;
+    }
+  }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function custom_menu_local_tasks_alter(&$data, $route_name) {
+  if (!empty($data['tabs'][0]['user.register'])) {
+    $data['tabs'][0]['user.register']['#link']['title'] = t('New account');
+  }
+  if (!empty($data['tabs'][0]['user.pass'])) {
+    $data['tabs'][0]['user.pass']['#link']['title'] = t('Reset password');
+  }
+}
+
+/**
+ * Helper function to add "pager" links to Image galleries.
+ */
+function _custom_image_gallery_pager(EntityInterface $entity, $gallery_images) {
+  $build = [];
+
+  // Strings for next/previous.
+  $next_text = t('Next Image');
+  $previous_text = t('Previous Image');
+
+  // Get previous content.
+  $query = \Drupal::entityQuery('media');
+  $previous = $query
+    ->condition('status', 1)
+    ->condition('bundle', $entity->bundle())
+    ->condition('mid', $entity->id(), '<')
+    ->sort('mid', 'DESC')
+    ->range(0, 1)
+    ->execute();
+
+  if (!empty($previous)) {
+    $previous_id = array_values($previous);
+    if (in_array($previous_id[0], $gallery_images)) {
+      $prev_path = Url::fromRoute(
+        'entity.media.canonical',
+        ['media' => $previous_id[0]],
+        ['fragment' => 'image']
+      );
+    }
+  }
+
+  // Get next content.
+  $query = \Drupal::entityQuery('media');
+  $next = $query
+    ->condition('status', 1)
+    ->condition('bundle', $entity->bundle())
+    ->condition('mid', $entity->id(), '>')
+    ->sort('mid', 'ASC')
+    ->range(0, 1)
+    ->execute();
+
+  if (!empty($next)) {
+    $next_id = array_values($next);
+    if (in_array($next_id[0], $gallery_images)) {
+      $next_path = Url::fromRoute(
+        'entity.media.canonical',
+        ['media' => $next_id[0]],
+        ['fragment' => 'image']
+      );
+    }
+  }
+
+  if (isset($prev_path) || isset($next_path)) {
+    $build[] = [
+      '#prefix' => '<div class="content-pager-links"><ul class="clearfix">',
+    ];
+
+    if (isset($prev_path)) {
+      $prev_link = \Drupal::l($previous_text, $prev_path);
+      $build[] = [
+        '#type' => 'html_tag',
+        '#tag' => 'li',
+        '#value' => isset($prev_link) ? $prev_link : '',
+        '#attributes' => [
+          'class' => ['previous'],
+        ],
+      ];
+    }
+
+    if (isset($next_path)) {
+      $next_link = \Drupal::l($next_text, $next_path);
+      $build[] = [
+        '#type' => 'html_tag',
+        '#tag' => 'li',
+        '#value' => isset($next_link) ? $next_link : '',
+        '#attributes' => [
+          'class' => ['next'],
+        ],
+      ];
+    }
+
+    $build[] = [
+      '#suffix' => '</ul></div>',
+    ];
+  }
+
+  return $build;
+}
+
+/**
+ * Helper function to add a 'next link' to an Image if one is available.
+ */
+function _custom_image_gallery_next_link(EntityInterface $entity, $gallery_images) {
+  $build = [];
+
+  // Get next content.
+  $query = \Drupal::entityQuery('media');
+  $next = $query
+    ->condition('status', 1)
+    ->condition('bundle', $entity->bundle())
+    ->condition('mid', $entity->id(), '>')
+    ->sort('mid', 'ASC')
+    ->range(0, 1)
+    ->execute();
+
+  if (!empty($next)) {
+    $next_id = array_values($next);
+    if (in_array($next_id[0], $gallery_images)) {
+      $next_url = Url::fromRoute(
+        'entity.media.canonical',
+        ['media' => $next_id[0]],
+        ['fragment' => 'image']
+      );
+      $build[] = [
+        '#markup' => isset($next_url) ? $next_url->toString() : '',
+      ];
+    }
+  }
+
+  return $build;
+}
+
+/**
+ * Helper function to add a gallery link to an Image gallery.
+ */
+function _custom_image_gallery_link(Node $node) {
+  $build = [];
+
+  $build[] = [
+    '#type' => 'link',
+    '#title' => $node->getTitle(),
+    '#url' => Url::fromRoute('entity.node.canonical', ['node' => $node->id()]),
+  ];
+
+  return $build;
+}
+
+/**
+ * Helper function to add a download link to an Image gallery.
+ */
+function _custom_image_download_link(EntityInterface $entity) {
+  $build = [];
+
+  $image_url = file_create_url($entity->field_image->entity->getFileUri());
+  $build[] = [
+    '#type' => 'link',
+    '#title' => t('Download file'),
+    '#url' => Url::fromURI($image_url),
+  ];
+
+  return $build;
+}
+
+/**
+ * Delete all nodes of a given node type.
+ *
+ * @param string $type
+ *   The node type to delete.
+ */
+function _custom_delete_all_nodes_of_type(string $type) {
+  $storage_handler = \Drupal::entityTypeManager()->getStorage("node");
+  $entities = $storage_handler->loadByProperties(["type" => $type]);
+  $storage_handler->delete($entities);
+}
+
+/**
+ * Delete all media entities of a given bundle.
+ *
+ * NOTE: Only deletes 1000 entities at a time due to memory issues.
+ *
+ * @param string $bundle
+ *   The media entity bundle to delete.
+ */
+function _custom_delete_all_media_entities_of_bundle(string $bundle) {
+  $entity_type = 'media';
+
+  // Get an array of all the media entities in the bundle.
+  $query = \Drupal::entityQuery($entity_type)
+    ->condition('bundle', $bundle);
+  $entity_ids = $query->execute();
+
+  // Delete 1000 of the media entities per run to avoid OOM issues.
+  $entity_ids_to_delete = array_slice($entity_ids, 0, 1000);
+  entity_delete_multiple($entity_type, $entity_ids_to_delete);
+}

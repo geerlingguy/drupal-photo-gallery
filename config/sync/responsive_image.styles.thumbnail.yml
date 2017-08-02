@@ -1,0 +1,24 @@
+uuid: fa153291-78eb-4bd2-ab93-76379ac41cfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.thumbnail
+    - image.style.thumbnail_2x
+  theme:
+    - jeffgpix
+id: thumbnail
+label: Thumbnail
+image_style_mappings:
+  -
+    breakpoint_id: jeffgpix.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: thumbnail
+  -
+    breakpoint_id: jeffgpix.small
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: thumbnail_2x
+breakpoint_group: jeffgpix
+fallback_image_style: thumbnail
