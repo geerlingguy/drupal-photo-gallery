@@ -16,7 +16,7 @@ This site uses the [Drupal VM Docker base image](https://hub.docker.com/r/geerli
 
   1. Ensure you have Docker and Composer installed.
   1. Run `composer install` in this directory.
-  1. Edit your hosts file and add: `192.168.88.23  local.drupal-photo-gallery.com`
+  1. Edit your hosts file and add: `192.168.88.23  local.d8pix.com`
   1. Run the command (if on Mac) `sudo ifconfig lo0 alias 192.168.88.23/24`
   1. Run `docker-compose up -d`
   1. Either:
@@ -28,11 +28,11 @@ This site uses the [Drupal VM Docker base image](https://hub.docker.com/r/geerli
 
 You can either start an interactive session inside the container with:
 
-    docker exec -it drupal-photo-gallery-local /bin/bash
+    docker exec -it d8pix-local /bin/bash
 
 Or you can run one-off commands:
 
-    docker exec drupal-photo-gallery-local bash -c "drush --root=/var/www/drupalvm/drupal/web --uri=local.drupal-photo-gallery.com cex -y"
+    docker exec d8pix-local bash -c "drush --root=/var/www/drupalvm/drupal/web --uri=local.d8pix.com cex -y"
 
 ### Install site from existing configuration
 
@@ -43,7 +43,7 @@ Install a fresh instance of the Acquia Photo Gallery site with the following dru
       --account-pass=admin \
       --config-dir=../config/sync \
       --db-url=mysql://drupal:drupal@localhost/drupal \
-      --uri=local.drupal-photo-gallery.com
+      --uri=local.d8pix.com
 
 Then, log into the site using the credentials:
 
@@ -56,6 +56,6 @@ Then, log into the site using the credentials:
 
 This site uses a full configuration export, and to update the site's configuration, you can run:
 
-    drush --root=/var/www/drupalvm/drupal/web --uri=local.drupal-photo-gallery.com cex -y
+    drush --root=/var/www/drupalvm/drupal/web --uri=local.d8pix.com cex -y
 
 This should update the configuration as stored in `config/default`. Commit this new config, then test the configuration by reinstalling the site (to make sure the config works on a fresh install).

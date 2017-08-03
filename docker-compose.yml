@@ -4,7 +4,7 @@ services:
 
   drupal-vm:
     build: .
-    container_name: drupal-photo-gallery-local
+    container_name: d8pix-local
     ports:
       - 80:80
       - 443:443
@@ -16,6 +16,7 @@ services:
     privileged: true
     volumes:
       - .:/var/www/drupalvm/drupal:rw,cached
+      - /var/lib/mysql
     command: /lib/systemd/systemd
     networks:
       drupalvm:
