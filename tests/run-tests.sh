@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 # A script to run Drupal VM functional tests.
+set -e
+
 printf "\n"${green}"Building local environment via Docker Compose."${neutral}"\n"
 docker-compose up -d
 
