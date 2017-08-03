@@ -1,5 +1,7 @@
 # Drupal Photo Gallery
 
+[![Build Status](https://travis-ci.org/geerlingguy/drupal-photo-gallery.svg?branch=master)](https://travis-ci.org/geerlingguy/drupal-photo-gallery)
+
 TODO: Description of this site.
 
 ## Resources
