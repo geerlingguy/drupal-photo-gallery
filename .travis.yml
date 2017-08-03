@@ -1,0 +1,16 @@
+---
+language: php
+php: '7.1'
+services: docker
+
+addons:
+  hosts:
+    - local.d8pix.com
+
+before_install:
+  # Pull container.
+  - docker pull geerlingguy/drupal-vm:latest
+
+script:
+  # Run tests.
+  - composer run-tests
