@@ -44,7 +44,7 @@ script:
 
   # Check if site was installed successfully.
   - curl --head http://local.d8pix.com/user/login
-  - curl http://local.d8pix.com/ # TODO: | grep 'Some text.'
+  - curl http://local.d8pix.com/ | grep 'Enter your Drupal Photo Gallery username.'
 
   # Kill the environment.
   - docker-compose down
