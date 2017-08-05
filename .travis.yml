@@ -29,6 +29,22 @@ before_install:
   - echo '192.168.88.23  local.d8pix.com' | sudo tee -a /etc/hosts
 
 script:
-  # Run tests.
-  - composer install
-  - composer run-tests
+  # Build environment.
+  - docker-compose up -d
+  - docker exec d8pix bash -c "cd /var/www/drupalvm/drupal; composer install"
+
+  # Install the site from existing config.
+  - >
+    docker exec d8pix bash -c "\
+      drush site-install minimal -y  \
+      --site-name='Drupal Photo Gallery' \
+      --account-pass=admin \
+      --config-dir=../config/sync \
+      --uri=local.d8pix.com"
+
+  # Check if site was installed successfully.
+  - curl --head http://local.d8pix.com/user/login
+  - curl http://local.d8pix.com/ # TODO: | grep 'Some text.'
+
+  # Kill the environment.
+  - docker-compose down
