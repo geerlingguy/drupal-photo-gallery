@@ -1,21 +1,23 @@
 ---
-language: php
-php: '7.1'
 services: docker
 
 env:
   DOCKER_COMPOSE_VERSION: 1.15.0
 
-addons:
-  hosts:
-    - local.d8pix.com
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 
 before_install:
+  # Stop Travis CI's MySQL instance.
+  - sudo service mysql stop
+
   # Upgrade Docker Compose.
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+
   # Upgrade Docker.
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
@@ -23,6 +25,10 @@ before_install:
   # Pull container.
   - docker pull geerlingguy/drupal-vm:latest
 
+  # Set up hostname.
+  - echo '192.168.88.23  local.d8pix.com' | sudo tee -a /etc/hosts
+
 script:
   # Run tests.
+  - composer install
   - composer run-tests
