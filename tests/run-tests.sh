@@ -12,6 +12,7 @@ docker exec d8pix bash -c "\
       --site-name='Drupal Photo Gallery' \
       --account-pass=admin \
       --config-dir=../config/sync \
+      --db-url=mysql://drupal:drupal@127.0.0.1/drupal \
       --uri=local.d8pix.com"
 
 printf "\n"${green}"Checking if the site was installed successfully."${neutral}"\n"
