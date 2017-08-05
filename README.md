@@ -30,11 +30,11 @@ This site uses the [Drupal VM Docker base image](https://hub.docker.com/r/geerli
 
 You can either start an interactive session inside the container with:
 
-    docker exec -it d8pix-local /bin/bash
+    docker exec -it d8pix /bin/bash
 
 Or you can run one-off commands:
 
-    docker exec d8pix-local bash -c "drush --root=/var/www/drupalvm/drupal/web --uri=local.d8pix.com cex -y"
+    docker exec d8pix bash -c "drush --root=/var/www/drupalvm/drupal/web --uri=local.d8pix.com cex -y"
 
 ### Install site from existing configuration
 
