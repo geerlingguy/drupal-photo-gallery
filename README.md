@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/geerlingguy/drupal-photo-gallery.svg?branch=master)](https://travis-ci.org/geerlingguy/drupal-photo-gallery)
 
-TODO: Description of this site.
+An intelligent photo gallery built with [Drupal 8](https://www.drupal.org/8), Amazon [S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), and [Rekognition](https://aws.amazon.com/rekognition/).
 
 ## Resources
 
