@@ -33,7 +33,7 @@
         "drupal/exif": "^1.0",
         "drupal/file_browser": "^1.0",
         "drupal/image_effects": "^1.0",
-        "drupal/imagemagick": "^1.0",
+        "drupal/imagemagick": "^2.0",
         "drupal/media_entity": "^1.0",
         "drupal/media_entity_image": "^1.0",
         "drupal/menu_link_attributes": "^1.0",

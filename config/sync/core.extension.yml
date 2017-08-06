@@ -24,6 +24,7 @@ module:
   field: 0
   field_ui: 0
   file: 0
+  file_mdm: 0
   filter: 0
   hal: 0
   help: 0
@@ -42,9 +43,9 @@ module:
   r4032login: 0
   rekognition_api: 0
   responsive_image: 0
-  s3fs: 0
   rest: 0
   restui: 0
+  s3fs: 0
   serialization: 0
   system: 0
   taxonomy: 0
