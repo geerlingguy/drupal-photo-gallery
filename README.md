@@ -56,8 +56,8 @@ Then, log into the site using the credentials:
 
 ## Updating configuration
 
-This site uses a full configuration export, and to update the site's configuration, you can run:
+This site uses a full configuration export, and to update the site's configuration, you can run (from within the docroot):
 
-    drush --root=/var/www/drupalvm/drupal/web --uri=local.d8pix.com cex -y
+    drush --uri=local.d8pix.com cex -y
 
 This should update the configuration as stored in `config/default`. Commit this new config, then test the configuration by reinstalling the site (to make sure the config works on a fresh install).
