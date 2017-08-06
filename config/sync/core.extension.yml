@@ -25,6 +25,7 @@ module:
   field_ui: 0
   file: 0
   file_mdm: 0
+  file_mdm_exif: 0
   filter: 0
   hal: 0
   help: 0
