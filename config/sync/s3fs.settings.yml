@@ -21,3 +21,4 @@ saveas: ''
 torrents: ''
 _core:
   default_config_hash: AFfSm52GJ9rsO6Yf443h1qoneah-gQg5s1owgEmq-S4
+redirect_styles_ttl: 0

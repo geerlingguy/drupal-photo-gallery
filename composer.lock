@@ -124,16 +124,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.28.3",
+            "version": "3.32.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "8c3c45f73abfa377f37599da49d053e5d2347059"
+                "reference": "d34a5779803ae7bc3efd3c6cab6e4e6f3b7409dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8c3c45f73abfa377f37599da49d053e5d2347059",
-                "reference": "8c3c45f73abfa377f37599da49d053e5d2347059",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d34a5779803ae7bc3efd3c6cab6e4e6f3b7409dd",
+                "reference": "d34a5779803ae7bc3efd3c6cab6e4e6f3b7409dd",
                 "shasum": ""
             },
             "require": {
@@ -200,7 +200,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-05-24T18:18:21+00:00"
+            "time": "2017-08-01T21:51:56+00:00"
         },
         {
             "name": "composer/installers",
@@ -2961,17 +2961,17 @@
         },
         {
             "name": "drupal/s3fs",
-            "version": "3.0.0-alpha3",
+            "version": "3.0.0-alpha5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/s3fs",
-                "reference": "8.x-3.0-alpha3"
+                "reference": "8.x-3.0-alpha5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/s3fs-8.x-3.0-alpha3.zip",
-                "reference": "8.x-3.0-alpha3",
-                "shasum": "980a4e74aafdfb9b1db409dc177e7c5a5bc5fcec"
+                "url": "https://ftp.drupal.org/files/projects/s3fs-8.x-3.0-alpha5.zip",
+                "reference": null,
+                "shasum": "27b6694cea99e3fb9ed2cdf2f66874ab34de5f61"
             },
             "require": {
                 "aws/aws-sdk-php": "^3.18",
@@ -2983,8 +2983,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-alpha3",
-                    "datestamp": "1491253446"
+                    "version": "8.x-3.0-alpha5",
+                    "datestamp": "1499981642"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -2994,7 +2994,7 @@
             "authors": [
                 {
                     "name": "Abhishek Anand",
-                    "homepage": "https://www.drupal.org/user/2231116",
+                    "homepage": "https://www.drupal.org/user/1140544",
                     "email": "fly2abhishek@gmail.com"
                 },
                 {
@@ -3002,32 +3002,8 @@
                     "homepage": "https://www.drupal.org/u/jansete"
                 },
                 {
-                    "name": "coredumperror",
-                    "homepage": "https://www.drupal.org/user/1140544"
-                },
-                {
-                    "name": "jansete",
-                    "homepage": "https://www.drupal.org/user/1358146"
-                },
-                {
                     "name": "naveenvalecha",
                     "homepage": "https://www.drupal.org/user/2665733"
-                },
-                {
-                    "name": "neerajskydiver",
-                    "homepage": "https://www.drupal.org/user/227792"
-                },
-                {
-                    "name": "steel-track",
-                    "homepage": "https://www.drupal.org/user/847488"
-                },
-                {
-                    "name": "webankit",
-                    "homepage": "https://www.drupal.org/user/533078"
-                },
-                {
-                    "name": "zach.bimson",
-                    "homepage": "https://www.drupal.org/user/1644060"
                 }
             ],
             "description": "Adds an Amazon Simple Storage Service-based remote file system to Drupal.",
@@ -3039,17 +3015,17 @@
         },
         {
             "name": "drupal/twig_tweak",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/twig_tweak",
-                "reference": "8.x-1.7"
+                "reference": "8.x-1.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/twig_tweak-8.x-1.7.zip",
-                "reference": "8.x-1.7",
-                "shasum": "32c39abb35f9845c24998eb2cdeb41fac43254e6"
+                "url": "https://ftp.drupal.org/files/projects/twig_tweak-8.x-1.8.zip",
+                "reference": "8.x-1.8",
+                "shasum": "2cf63537214e77a5c0d2697d8062604113980228"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3063,8 +3039,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.7",
-                    "datestamp": "1493543043"
+                    "version": "8.x-1.8",
+                    "datestamp": "1495984083"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
