@@ -40,6 +40,7 @@
         "drupal/migrate_plus": "^2.0",
         "drupal/migrate_tools": "^2.0",
         "drupal/r4032login": "^1.0",
+        "drupal/rekognition_api": "^1.0",
         "drupal/restui": "^1.14",
         "drupal/s3fs": "^3.0",
         "drupal/twig_tweak": "^1.0",

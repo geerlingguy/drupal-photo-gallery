@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2640d7e3922488b45aa704f0d256c98a",
+    "content-hash": "c9ba86398c67a81c1170d047478408e0",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2549,7 +2549,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/imagemagick-8.x-2.1.zip",
-                "reference": null,
+                "reference": "8.x-2.1",
                 "shasum": "3b8ef87583c4b740844a4478ff4e4c013c491b2f"
             },
             "require": {
@@ -2990,6 +2990,49 @@
                 "source": "http://cgit.drupalcode.org/r4032login"
             },
             "time": "2017-02-08 04:20:19"
+        },
+        {
+            "name": "drupal/rekognition_api",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/rekognition_api",
+                "reference": "8.x-1.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/rekognition_api-8.x-1.0-alpha1.zip",
+                "reference": null,
+                "shasum": "edbd0f61a7e2e0e60d6102179032bb5cf8f4d65e"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha1",
+                    "datestamp": "1502069946"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "geerlingguy",
+                    "homepage": "https://www.drupal.org/user/389011"
+                }
+            ],
+            "description": "Endpoints for AWS Lambda Rekognition integration.",
+            "homepage": "https://www.drupal.org/project/rekognition_api",
+            "support": {
+                "source": "http://cgit.drupalcode.org/rekognition_api"
+            }
         },
         {
             "name": "drupal/restui",

@@ -1,6 +1,0 @@
-name: Rekognition API
-type: module
-description: 'Endpoints for AWS Lambda Rekognition.'
-package: custom
-version: '8.0'
-core: '8.x'
