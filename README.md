@@ -4,6 +4,8 @@
 
 An intelligent photo gallery built with [Drupal 8](https://www.drupal.org/8), Amazon [S3](https://aws.amazon.com/s3/), [Lambda](https://aws.amazon.com/lambda/), and [Rekognition](https://aws.amazon.com/rekognition/).
 
+![How it works](https://raw.githubusercontent.com/geerlingguy/drupal-photo-gallery/master/docs/images/drupal-photo-gallery-how-it-works.jpg)
+
 ## Resources
 
   - [Rekognition API](https://www.drupal.org/project/rekognition_api) module.
