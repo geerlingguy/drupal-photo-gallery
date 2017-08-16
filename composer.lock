@@ -2989,21 +2989,21 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/r4032login"
             },
-            "time": "2017-02-08 04:20:19"
+            "time": "2017-02-08T04:20:19+00:00"
         },
         {
             "name": "drupal/rekognition_api",
-            "version": "1.0.0-alpha1",
+            "version": "1.0.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/rekognition_api",
-                "reference": "8.x-1.0-alpha1"
+                "reference": "8.x-1.0-alpha2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/rekognition_api-8.x-1.0-alpha1.zip",
-                "reference": null,
-                "shasum": "edbd0f61a7e2e0e60d6102179032bb5cf8f4d65e"
+                "url": "https://ftp.drupal.org/files/projects/rekognition_api-8.x-1.0-alpha2.zip",
+                "reference": "8.x-1.0-alpha2",
+                "shasum": "1d827e2773f6557a8a41a16c352f40a43bcf47cc"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3014,8 +3014,12 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha1",
-                    "datestamp": "1502069946"
+                    "version": "8.x-1.0-alpha2",
+                    "datestamp": "1502855344",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",

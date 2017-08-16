@@ -54,10 +54,44 @@ Then, log into the site using the credentials:
 
 > Alternatively, you can provide your own `--account-name`, `--account-email`, and `--account-pass`.
 
-## Updating configuration
+## Updating Drupal site configuration
 
 This site uses a full configuration export, and to update the site's configuration, you can run (from within the docroot):
 
     drush --uri=local.d8pix.com cex -y
 
 This should update the configuration as stored in `config/default`. Commit this new config, then test the configuration by reinstalling the site (to make sure the config works on a fresh install).
+
+## AWS setup
+
+To allow AWS Lambda to call back to your Drupal site (so faces and labels can be integrated with your media entities), you must have Drupal running on a publicly-accessible URL. Therefore before any of the AWS integration for Rekognition can be tested, make sure you're running an installation of this site on a server with a publicly-accessible URL.
+
+After that, make sure you create a Drupal user account with permission to create and update nodes and taxonomy terms, then store that account's credentials for use by the Rekognition AWS Lambda function.
+
+After you have a Drupal site installed, and the API user created, do the following to prepare your local workstation and AWS account for the Rekognition resources:
+
+  1. Install AWS CLI.
+  1. Generate a 'programmatic access' AWS access key for an AWS IAM User with admin rights.
+  1. Store the access key ID and secret in a location suitable for use with the AWS CLI.
+  1. Create an S3 bucket named `drupal-lambda`, and upload a .zip archive containing the file `web/modules/contrib/rekognition_api/lambda/index.js`, after renaming the .zip archive to `drupal-media-rekognition.zip` (so the full S3 path is `s3://drupal-lambda/drupal-media-rekognition.zip`)
+
+Now that you're workstation is ready, and the lambda code is in place, run the following command to deploy the required AWS resources via AWS CloudFormation:
+
+    aws cloudformation deploy \
+      --region us-east-1 \
+      --profile mm \
+      --template-file web/modules/contrib/rekognition_api/lambda/DrupalMediaRekognition.yml \
+      --stack-name drupal-media-rekognition \
+      --capabilities CAPABILITY_NAMED_IAM \
+      --parameter-overrides \
+       DrupalUrl='http://www.example.com/' \
+       DrupalUsername='rekognition-api-user' \
+       DrupalPassword='secure-password-here'
+
+After this operation completes, you should see a message like:
+
+    Successfully created/updated stack - drupal-media-rekognition
+
+If you don't see that message, take a look in the AWS Console in the CloudFormation section, or use the AWS CLI to view detailed logs of what caused any issues.
+
+TODO: Any other setup required?
