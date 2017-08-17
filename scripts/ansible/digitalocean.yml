@@ -1,0 +1,61 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  vars_files:
+    - vars/main.yml
+
+  pre_tasks:
+    - name: Include optional local configuration override file.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "vars/local.yml"
+      tags: ['always']
+
+  tasks:
+    # Returns pubkey ID in do_key_personal.ssh_key.id
+    - name: Ensure your ssh key is present in your DigitalOcean account.
+      digital_ocean:
+        state: present
+        command: ssh
+        name: "{{ pubkey_name }}"
+        ssh_pub_key: "{{ lookup('file', pubkey_location) }}"
+      register: do_key_personal
+
+    - name: Ensure DigitalOcean droplet exists.
+      digital_ocean:
+        state: present
+        command: droplet
+        name: "{{ hostname }}"
+        unique_name: yes
+        size_id: "{{ size }}"
+        ssh_key_ids: ['{{ do_key_personal.ssh_key.id }}']
+        region_id: "{{ region }}"
+        image_id: "{{ image }}"
+      register: do_droplet
+
+    - name: Set the username used to connect to the host.
+      set_fact:
+        ssh_username: "{{ server_admin_username }}"
+      when:
+        - do_droplet.changed == False
+        - force_root_login == False
+
+    - name: Add DigitalOcean droplet to dynamic inventory.
+      add_host:
+        groupname: drupal
+        hostname: "{{ do_droplet.droplet.ip_address }}"
+        ansible_ssh_user: "{{ ssh_username | default('root') }}"
+        host_key_checking: False
+      changed_when: False
+
+    - name: Wait for SSH to be available.
+      wait_for:
+        host: "{{ do_droplet.droplet.ip_address }}"
+        port: 22
+        state: started
+      connection: local
+      become: no
+
+- include: setup.yml

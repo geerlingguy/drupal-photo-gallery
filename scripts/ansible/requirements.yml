@@ -1,0 +1,6 @@
+---
+- src: geerlingguy.security
+- src: geerlingguy.firewall
+- src: geerlingguy.git
+- src: geerlingguy.docker
+  version: 2.1.0

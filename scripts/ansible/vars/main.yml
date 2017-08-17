@@ -1,0 +1,36 @@
+---
+hostname: gallery.example.com
+
+# DigitalOcean droplet settings.
+region: nyc3
+size: 1gb
+# Get a list of all images with:
+#   curl -X GET --silent "https://api.digitalocean.com/v2/images?per_page=999" \
+#   -H "Authorization: Bearer $DO_API_TOKEN"
+image: ubuntu-16-04-x64
+
+# SSH key details.
+pubkey_name: My Public Key
+pubkey_location: ~/.ssh/id_rsa.pub
+
+# Other variables
+docker_compose_version: "1.15.0"
+firewall_disable_ufw: yes
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+  - "443"
+
+# Admin account.
+server_admin_username: drupal
+security_sudoers_passwordless: ['{{ server_admin_username }}']
+
+# Drupal vars.
+drupal_photo_gallery_git_url: https://github.com/geerlingguy/drupal-photo-gallery.git
+drupal_photo_gallery_git_version: master
+
+# Only to be used during initial provisioning or in case of weird emergency, for
+# example if you get the error "Failed to connect to the host via ssh:
+# ssh_exchange_identification: read: Connection reset by peer"
+force_root_login: no

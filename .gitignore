@@ -27,3 +27,8 @@ drush/contrib
 # Ignore Composer vendor dir.
 vendor/
 vendor/.git
+
+# Ignore Ansible local config.
+scripts/ansible/roles/*
+scripts/ansible/vars/local.yml
+scripts/ansible/*.retry

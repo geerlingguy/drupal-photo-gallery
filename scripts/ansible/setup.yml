@@ -1,0 +1,70 @@
+---
+- hosts: drupal
+  become: yes
+  gather_facts: no
+
+  vars_files:
+    - vars/main.yml
+
+  pre_tasks:
+    # See: https://github.com/geerlingguy/drupal-vm/issues/1245
+    - name: Install Python if it's not available.
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      register: output
+      changed_when: output.stdout != ""
+
+    - action: setup
+      tags: ['always']
+
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Include optional local configuration override file.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "vars/local.yml"
+      tags: ['always']
+
+    - name: Ensure server admin user account exists.
+      user:
+        name: "{{ server_admin_username }}"
+        createhome: yes
+        generate_ssh_key: yes
+        ssh_key_comment: "ansible-{{ hostname }}"
+        groups: sudo
+        shell: /bin/bash
+
+    - name: Ensure public key is added for the admin user account.
+      authorized_key:
+        user: "{{ server_admin_username }}"
+        state: present
+        key: "{{ lookup('file', pubkey_location) }}"
+
+  roles:
+    - geerlingguy.security
+    - geerlingguy.firewall
+    - geerlingguy.docker
+    - geerlingguy.git
+
+  tasks:
+    - name: Add server admin user to Docker group.
+      user:
+        name: "{{ server_admin_username }}"
+        groups: docker
+        append: yes
+
+    - name: Clone Drupal Photo Gallery project to the server.
+      git:
+        repo: "{{ drupal_photo_gallery_git_url }}"
+        version: "{{ drupal_photo_gallery_git_version }}"
+        dest: /opt/drupal-photo-gallery
+        accept_hostkey: true
+        force: no
+
+    # TODO: Bring up the site using Docker. Compose or docker_container.
+    # With Docker Compose:
+    #   1. cd into cloned project directory, then...
+    #   2. docker-compose up -d
+    #   3. docker exec -t d8pix bash -c "cd .. && composer install"
+    #   4. docker exec -t d8pix [drush site-install command from README]
+    #   5. Site is up at 192.168.88.23:80 and 0.0.0.0:80, yay!

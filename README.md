@@ -96,4 +96,8 @@ After this operation completes, you should see a message like:
 
 If you don't see that message, take a look in the AWS Console in the CloudFormation section, or use the AWS CLI to view detailed logs of what caused any issues.
 
-TODO: Any other setup required?
+## DigitalOcean setup
+
+This project includes an Ansible playbook which creates a new DigitalOcean droplet, then installs everything on it to run the Drupal site at a publicly-accessible IP address (this is required for the Lambda function to be able to communicate back to the site with labels and faces).
+
+Please see the README file inside `scripts/ansible` for a detailed guide for building the Drupal server using DigitalOcean.

@@ -1,0 +1,7 @@
+---
+# You can override any variables defined in `main.yml` in this file. Just make
+# a duplicate and name it `local.yml`.
+#
+# For example, you can override the location of your public SSH key by
+# uncommenting the line below:
+# pubkey_location: ~/.ssh/id_rsa.pub
