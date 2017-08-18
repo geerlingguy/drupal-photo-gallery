@@ -96,6 +96,12 @@ After this operation completes, you should see a message like:
 
 If you don't see that message, take a look in the AWS Console in the CloudFormation section, or use the AWS CLI to view detailed logs of what caused any issues.
 
+Finally, you need to manually create a Rekognition 'face collection' to store facial recognition data. Someday this will hopefully be automatically created as part of the CloudFormation template, but until that's possible, you need to use the AWS CLI to run the following command:
+
+    aws rekognition create-collection --region us-east-1 --collection-id drupal-media-rekognition
+
+Be sure to use the same `--region` as you did when running the `cloudformation deploy` command earlier.
+
 ## DigitalOcean setup
 
 This project includes an Ansible playbook which creates a new DigitalOcean droplet, then installs everything on it to run the Drupal site at a publicly-accessible IP address (this is required for the Lambda function to be able to communicate back to the site with labels and faces).
