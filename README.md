@@ -86,7 +86,7 @@ Now that you're workstation is ready, and the lambda code is in place, run the f
       --stack-name drupal-media-rekognition \
       --capabilities CAPABILITY_NAMED_IAM \
       --parameter-overrides \
-       DrupalUrl='http://www.example.com/' \
+       DrupalUrl='www.example.com' \
        DrupalUsername='rekognition-api-user' \
        DrupalPassword='secure-password-here'
 
