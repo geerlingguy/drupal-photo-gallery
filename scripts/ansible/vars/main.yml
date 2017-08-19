@@ -39,7 +39,7 @@ drupal_build_composer_project: no
 drupal_install_profile: minimal
 drupal_site_name: "Drupal Photo Gallery"
 drupal_account_name: admin
-drupal_account_password: add-a-secure-password
+drupal_account_pass: add-a-secure-password
 drupal_site_install_extra_args:
   - "--config-dir=../config/sync"
 

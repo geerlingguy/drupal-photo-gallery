@@ -11,4 +11,4 @@
 # drupal_db_password: put-another-secure-password-here
 #
 # And it would be good to define a secure Drupal admin account password:
-# drupal_account_password: add-a-secure-password
+# drupal_account_pass: add-a-secure-password
