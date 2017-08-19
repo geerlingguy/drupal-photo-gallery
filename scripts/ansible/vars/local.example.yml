@@ -5,3 +5,10 @@
 # For example, you can override the location of your public SSH key by
 # uncommenting the line below:
 # pubkey_location: ~/.ssh/id_rsa.pub
+#
+# You should definitely override variables like MySQL passwords:
+# mysql_root_password: put-your-secure-password-here
+# drupal_db_password: put-another-secure-password-here
+#
+# And it would be good to define a secure Drupal admin account password:
+# drupal_account_password: add-a-secure-password

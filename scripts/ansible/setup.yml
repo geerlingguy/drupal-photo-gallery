@@ -43,28 +43,15 @@
   roles:
     - geerlingguy.security
     - geerlingguy.firewall
-    - geerlingguy.docker
     - geerlingguy.git
+    - geerlingguy.exim
+    - geerlingguy.apache
+    - geerlingguy.mysql
+    - geerlingguy.php
+    - geerlingguy.php-mysql
+    - geerlingguy.php-versions
+    - geerlingguy.drush
+    - geerlingguy.drupal
+    - geerlingguy.certbot
 
-  tasks:
-    - name: Add server admin user to Docker group.
-      user:
-        name: "{{ server_admin_username }}"
-        groups: docker
-        append: yes
-
-    - name: Clone Drupal Photo Gallery project to the server.
-      git:
-        repo: "{{ drupal_photo_gallery_git_url }}"
-        version: "{{ drupal_photo_gallery_git_version }}"
-        dest: /opt/drupal-photo-gallery
-        accept_hostkey: true
-        force: no
-
-    # TODO: Bring up the site using Docker. Compose or docker_container.
-    # With Docker Compose:
-    #   1. cd into cloned project directory, then...
-    #   2. docker-compose up -d
-    #   3. docker exec -t d8pix bash -c "cd .. && composer install"
-    #   4. docker exec -t d8pix [drush site-install command from README]
-    #   5. Site is up at 192.168.88.23:80 and 0.0.0.0:80, yay!
+  tasks: []

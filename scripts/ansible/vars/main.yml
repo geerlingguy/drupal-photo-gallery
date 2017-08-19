@@ -13,22 +13,74 @@ image: ubuntu-16-04-x64
 pubkey_name: My Public Key
 pubkey_location: ~/.ssh/id_rsa.pub
 
-# Other variables
-docker_compose_version: "1.15.0"
-firewall_disable_ufw: yes
-firewall_allowed_tcp_ports:
-  - "22"
-  - "25"
-  - "80"
-  - "443"
-
 # Admin account.
 server_admin_username: drupal
 security_sudoers_passwordless: ['{{ server_admin_username }}']
 
-# Drupal vars.
-drupal_photo_gallery_git_url: https://github.com/geerlingguy/drupal-photo-gallery.git
-drupal_photo_gallery_git_version: master
+# Drupal deployment vars.
+drupal_deploy: true
+drupal_deploy_repo: https://github.com/geerlingguy/drupal-photo-gallery.git
+drupal_deploy_version: master
+drupal_deploy_update: true
+drupal_deploy_dir: /var/www/drupal
+drupal_deploy_accept_hostkey: yes
+drupal_deploy_composer_install: yes
+drupal_core_path: "{{ drupal_deploy_dir }}/docroot"
+drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+drupal_db_user: gallery
+drupal_db_password: add-a-secure-password-override
+drupal_db_name: gallery
+drupal_db_backend: mysql
+drupal_db_host: "127.0.0.1"
+
+# Drupal installation vars.
+drupal_install_profile: minimal
+drupal_site_name: "Drupal Photo Gallery"
+drupal_account_name: admin
+drupal_account_password: add-a-secure-password
+drupal_site_install_extra_args:
+  - "--config-dir=../config/sync"
+
+# Firewall settings.
+firewall_disable_ufw: yes
+firewall_allowed_tcp_ports:
+  - "22"
+  - "80"
+  - "443"
+
+# Apache settings.
+apache_vhosts_ssl:
+  - servername: "{{ hostname }}"
+    serveralias: "www.{{ hostname }}"
+    serveradmin: webmaster@{{ hostname }}
+    documentroot: "{{ drupal_core_path }}"
+apache_create_vhosts: true
+apache_remove_default_vhost: true
+apache_mods_enabled:
+  - expires.load
+  - ssl.load
+  - rewrite.load
+
+# MySQL settings.
+mysql_databases:
+  - name: "{{ drupal_db_name }}"
+    encoding: utf8
+    collation: utf8_general_ci
+mysql_users:
+  - name: "{{ drupal_db_user }}"
+    host: "%"
+    password: "{{ drupal_db_password }}"
+    priv: "{{ drupal_db_name }}.*:ALL"
+
+# PHP settings.
+php_opcache_memory_consumption: "96"
+php_upload_max_filesize: "128M"
+php_max_file_uploads: "300"
+php_post_max_size: "128M"
+
+# Other settings.
+drush_version: "8.1.12"
+exim_primary_hostname: "{{ hostname }}"
 
 # Only to be used during initial provisioning or in case of weird emergency, for
 # example if you get the error "Failed to connect to the host via ssh:
