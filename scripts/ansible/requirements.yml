@@ -5,9 +5,10 @@
 - src: geerlingguy.apache
 - src: geerlingguy.mysql
 - src: geerlingguy.exim
+- src: geerlingguy.php-versions
 - src: geerlingguy.php
 - src: geerlingguy.php-mysql
-- src: geerlingguy.php-versions
+- src: geerlingguy.composer
 - src: geerlingguy.drush
 - src: geerlingguy.drupal
 - src: geerlingguy.certbot

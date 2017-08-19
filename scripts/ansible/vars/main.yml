@@ -26,14 +26,16 @@ drupal_deploy_dir: /var/www/drupal
 drupal_deploy_accept_hostkey: yes
 drupal_deploy_composer_install: yes
 drupal_core_path: "{{ drupal_deploy_dir }}/docroot"
-drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"
+drupal_core_owner: "{{ server_admin_username }}"
 drupal_db_user: gallery
 drupal_db_password: add-a-secure-password-override
 drupal_db_name: gallery
 drupal_db_backend: mysql
 drupal_db_host: "127.0.0.1"
+drupal_composer_dependencies: []
 
 # Drupal installation vars.
+drupal_build_composer_project: no
 drupal_install_profile: minimal
 drupal_site_name: "Drupal Photo Gallery"
 drupal_account_name: admin
@@ -49,17 +51,24 @@ firewall_allowed_tcp_ports:
   - "443"
 
 # Apache settings.
-apache_vhosts_ssl:
+apache_vhosts:
   - servername: "{{ hostname }}"
     serveralias: "www.{{ hostname }}"
     serveradmin: webmaster@{{ hostname }}
     documentroot: "{{ drupal_core_path }}"
+    extra_parameters: |
+        <FilesMatch \.php$>
+          SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
+        </FilesMatch>
 apache_create_vhosts: true
 apache_remove_default_vhost: true
 apache_mods_enabled:
   - expires.load
+  - headers.load
   - ssl.load
   - rewrite.load
+  - proxy.load
+  - proxy_fcgi.load
 
 # MySQL settings.
 mysql_databases:
@@ -73,10 +82,18 @@ mysql_users:
     priv: "{{ drupal_db_name }}.*:ALL"
 
 # PHP settings.
+php_version: "7.1"
+php_packages_extra:
+  - imagemagick
+  - "php{{ php_version }}-mbstring"
+  - "php{{ php_version }}-imagick"
+php_memory_limit: "256M"
 php_opcache_memory_consumption: "96"
 php_upload_max_filesize: "128M"
 php_max_file_uploads: "300"
 php_post_max_size: "128M"
+php_enable_php_fpm: true
+php_fpm_listen: "127.0.0.1:9000"
 
 # Other settings.
 drush_version: "8.1.12"
