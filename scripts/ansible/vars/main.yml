@@ -50,37 +50,6 @@ firewall_allowed_tcp_ports:
   - "80"
   - "443"
 
-# Apache settings.
-apache_vhosts:
-  - servername: "{{ hostname }}"
-    serveralias: "www.{{ hostname }}"
-    serveradmin: webmaster@{{ hostname }}
-    documentroot: "{{ drupal_core_path }}"
-    extra_parameters: |
-        <FilesMatch \.php$>
-          SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
-        </FilesMatch>
-apache_create_vhosts: true
-apache_remove_default_vhost: true
-apache_mods_enabled:
-  - expires.load
-  - headers.load
-  - ssl.load
-  - rewrite.load
-  - proxy.load
-  - proxy_fcgi.load
-
-# MySQL settings.
-mysql_databases:
-  - name: "{{ drupal_db_name }}"
-    encoding: utf8
-    collation: utf8_general_ci
-mysql_users:
-  - name: "{{ drupal_db_user }}"
-    host: "%"
-    password: "{{ drupal_db_password }}"
-    priv: "{{ drupal_db_name }}.*:ALL"
-
 # PHP settings.
 php_version: "7.1"
 php_packages_extra:
@@ -92,8 +61,36 @@ php_opcache_memory_consumption: "96"
 php_upload_max_filesize: "128M"
 php_max_file_uploads: "300"
 php_post_max_size: "128M"
-php_enable_php_fpm: true
-php_fpm_listen: "127.0.0.1:9000"
+php_enable_php_fpm: no
+
+# Apache settings.
+apache_packages:
+  - apache2
+  - apache2-utils
+  - libapache2-mod-php{{ php_version }}
+apache_vhosts:
+  - servername: "{{ hostname }}"
+    serveralias: "www.{{ hostname }}"
+    serveradmin: webmaster@{{ hostname }}
+    documentroot: "{{ drupal_core_path }}"
+apache_create_vhosts: yes
+apache_remove_default_vhost: yes
+apache_mods_enabled:
+  - expires.load
+  - headers.load
+  - ssl.load
+  - rewrite.load
+
+# MySQL settings.
+mysql_databases:
+  - name: "{{ drupal_db_name }}"
+    encoding: utf8
+    collation: utf8_general_ci
+mysql_users:
+  - name: "{{ drupal_db_user }}"
+    host: "%"
+    password: "{{ drupal_db_password }}"
+    priv: "{{ drupal_db_name }}.*:ALL"
 
 # Other settings.
 drush_version: "8.1.12"
