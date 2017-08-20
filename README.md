@@ -56,7 +56,7 @@ Then, log into the site using the credentials:
 
 > Alternatively, you can provide your own `--account-name`, `--account-email`, and `--account-pass`.
 
-## Updating Drupal site configuration
+### Updating Drupal site configuration
 
 This site uses a full configuration export, and to update the site's configuration, you can run (from within the docroot):
 
@@ -64,7 +64,23 @@ This site uses a full configuration export, and to update the site's configurati
 
 This should update the configuration as stored in `config/default`. Commit this new config, then test the configuration by reinstalling the site (to make sure the config works on a fresh install).
 
-## AWS setup
+### Connecting S3, Lambda, and Rekognition to your Local environment
+
+Since S3 is used as a file store for all media files in Drupal, you don't need to do anything special to get images working locally.
+
+However, when you upload new images locally, they will trigger the Lambda function that eventually calls back to your live Drupal site's REST Rekognition endpoint—which won't help if you're trying to test something locally!
+
+If you want to test the Rekognition data locally, you need to use something like `ngrok` or some other service to expose your local site to AWS, then you need to update the Lambda function's `DRUPAL_URL` environment variable to point to your local environment. Alternatively, you could create a separate Lambda function for testing (so your live site can still work with the production Lambda function).
+
+## Deploying to Production
+
+### DigitalOcean setup - LAMP Droplet for Drupal
+
+This project includes an Ansible playbook which creates a new DigitalOcean droplet, then installs everything on it to run the Drupal site at a publicly-accessible IP address (this is required for the Lambda function to be able to communicate back to the site with labels and faces).
+
+Please see the README file inside `scripts/ansible` for a detailed guide for building the Drupal server on DigitalOcean using Ansible.
+
+### AWS setup - S3, Lambda, and Rekognition
 
 To allow AWS Lambda to call back to your Drupal site (so faces and labels can be integrated with your media entities), you must have Drupal running on a publicly-accessible URL. Therefore before any of the AWS integration for Rekognition can be tested, make sure you're running an installation of this site on a server with a publicly-accessible URL.
 
@@ -72,16 +88,20 @@ After that, make sure you create a Drupal user account with permission to create
 
 After you have a Drupal site installed, and the API user created, do the following to prepare your local workstation and AWS account for the Rekognition resources:
 
-  1. Install AWS CLI.
-  1. Generate a 'programmatic access' AWS access key for an AWS IAM User with admin rights.
-  1. Store the access key ID and secret in a location suitable for use with the AWS CLI.
-  1. Create an S3 bucket named `drupal-lambda`, and upload a .zip archive containing the file `web/modules/contrib/rekognition_api/lambda/index.js`, after renaming the .zip archive to `drupal-media-rekognition.zip` (so the full S3 path is `s3://drupal-lambda/drupal-media-rekognition.zip`)
+  1. Install [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html).
+  1. Generate a 'programmatic access' AWS access key for an AWS IAM User with admin rights, and [add the Key ID and Secret Access Key to your environment](http://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html).
+  1. Copy the Rekognition API's lambda function into an S3 bucket:
+    1. Create an S3 bucket: `aws s3 --profile default mb s3://drupal-lambda`
+    1. Compress the `index.js` file inside `web/modules/contrib/rekognition_api/lambda/index.js` into a .zip archive: `zip -rj drupal-media-rekognition.zip web/modules/contrib/rekognition_api/lambda/index.js`
+      - If the `index.js` file doesn't exist, you may have forgotten to run `composer install`; run that first.
+    1. Copy the archive into the bucket you created earlier: `aws s3 --profile default cp drupal-media-rekognition.zip s3://drupal-lambda/`
+    1. Delete the file since it's no longer needed: `rm -f drupal-media-rekognition.zip`.
 
-Now that you're workstation is ready, and the lambda code is in place, run the following command to deploy the required AWS resources via AWS CloudFormation:
+Now that you're workstation is ready, and the lambda code is in place, run the following command (replacing the `DrupalUrl` and `DrupalPassword` at least) to deploy the required AWS resources via AWS CloudFormation:
 
     aws cloudformation deploy \
       --region us-east-1 \
-      --profile mm \
+      --profile default \
       --template-file web/modules/contrib/rekognition_api/lambda/DrupalMediaRekognition.yml \
       --stack-name drupal-media-rekognition \
       --capabilities CAPABILITY_NAMED_IAM \
@@ -98,12 +118,6 @@ If you don't see that message, take a look in the AWS Console in the CloudFormat
 
 Finally, you need to manually create a Rekognition 'face collection' to store facial recognition data. Someday this will hopefully be automatically created as part of the CloudFormation template, but until that's possible, you need to use the AWS CLI to run the following command:
 
-    aws rekognition create-collection --region us-east-1 --collection-id drupal-media-rekognition
+    aws rekognition create-collection --region us-east-1 --profile default --collection-id drupal-media-rekognition
 
-Be sure to use the same `--region` as you did when running the `cloudformation deploy` command earlier.
-
-## DigitalOcean setup
-
-This project includes an Ansible playbook which creates a new DigitalOcean droplet, then installs everything on it to run the Drupal site at a publicly-accessible IP address (this is required for the Lambda function to be able to communicate back to the site with labels and faces).
-
-Please see the README file inside `scripts/ansible` for a detailed guide for building the Drupal server using DigitalOcean.
+Be sure to use the same `--region` and `--profile` as you did when running the `cloudformation deploy` command earlier.

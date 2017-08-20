@@ -30,6 +30,8 @@ The token will be a very long string of gibberish—copy that text, and store it
   1. Run `ansible-galaxy install -r requirements.yml` to install required Ansible roles.
   1. Run `ansible-playbook digitalocean.yml` to provision the instance and setup Docker and the Drupal Photo Gallery site.
 
+> Note: If you get an error like `Unable to locate package python-minimal` the first time you run this playbook, you may need to run provisioning as the root user once more: `ansible-playbook digitalocean.yml --extra-vars="force_root_login=true"`. If this works, you shouldn't need to add the `--extra-vars` anymore.
+
 ## Complete Gallery site setup
 
 There are a few other things you need to do to complete the connection to your AWS account resources (set up via the CloudFormation template in the Rekognition API module):
@@ -37,6 +39,7 @@ There are a few other things you need to do to complete the connection to your A
   1. Log into your new site as the administrator.
   1. Visit the Configuration > Media > S3 File System page and add your AWS Access Key ID and Secret Key.
   1. Visit the Configuration > System > Basic site settings page and make sure the 'Default front page' is set to `/galleries`.
+  1. Create a Rekognition API user (with the `DRUPAL_USERNAME` and `DRUPAL_URL` set in the AWS Lambda function).
   1. Visit the Reports > Status Report page and verify there are no errors you need to resolve.
 
 ## Deploy changes to your Droplet

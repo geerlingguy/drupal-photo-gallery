@@ -45,10 +45,10 @@
     - geerlingguy.firewall
     - geerlingguy.git
     - geerlingguy.exim
-    - geerlingguy.apache
-    - geerlingguy.mysql
     - geerlingguy.php-versions
     - geerlingguy.php
+    - geerlingguy.apache
+    - geerlingguy.mysql
     - geerlingguy.php-mysql
     - geerlingguy.composer
     - geerlingguy.drush
