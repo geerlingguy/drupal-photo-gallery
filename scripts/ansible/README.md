@@ -39,7 +39,7 @@ There are a few other things you need to do to complete the connection to your A
   1. Log into your new site as the administrator.
   1. Visit the Configuration > Media > S3 File System page and add your AWS Access Key ID and Secret Key.
   1. Visit the Configuration > System > Basic site settings page and make sure the 'Default front page' is set to `/galleries`.
-  1. Create a Rekognition API user (with the `DRUPAL_USERNAME` and `DRUPAL_URL` set in the AWS Lambda function).
+  1. Visit the People > Add a new user page to create a Rekognition API user (with the `DRUPAL_USERNAME` and `DRUPAL_URL` set in the AWS Lambda function).
   1. Visit the Reports > Status Report page and verify there are no errors you need to resolve.
 
 ## Deploy changes to your Droplet
