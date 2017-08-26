@@ -70,7 +70,15 @@ Since S3 is used as a file store for all media files in Drupal, you don't need t
 
 However, when you upload new images locally, they will trigger the Lambda function that eventually calls back to your live Drupal site's REST Rekognition endpoint—which won't help if you're trying to test something locally!
 
-If you want to test the Rekognition data locally, you need to use something like `ngrok` or some other service to expose your local site to AWS, then you need to update the Lambda function's `DRUPAL_URL` environment variable to point to your local environment. Alternatively, you could create a separate Lambda function for testing (so your live site can still work with the production Lambda function).
+If you want to test the Rekognition data locally, you need to:
+
+  1. Use [`ngrok`](https://ngrok.com) or some other service to expose your local site to the public Internet:
+    1. [Download `ngrok`](https://ngrok.com/download)
+    1. Run `./ngrok http local.d8pix.com:80`
+    1. Copy out the 'Forwarding' URL.
+  1. Update the Lambda function's `DRUPAL_URL` environment variable to point to your local environment URL (if using `ngrok`, the 'Forwarding' URL.
+
+Alternatively, you could create a separate Lambda function for testing (so your live site can still work with the production Lambda function).
 
 ## Deploying to Production
 
@@ -114,9 +122,9 @@ After this operation completes, you should see a message like:
 
     Successfully created/updated stack - drupal-media-rekognition
 
-If you don't see that message, take a look in the AWS Console in the CloudFormation section, or use the AWS CLI to view detailed logs of what caused any issues.
+If you don't see that message, take a look in the AWS Console in the CloudFormation section, or use the AWS CLI to view detailed error logs.
 
-Finally, you need to manually create a Rekognition 'face collection' to store facial recognition data. Someday this will hopefully be automatically created as part of the CloudFormation template, but until that's possible, you need to use the AWS CLI to run the following command:
+Finally, you need to manually create a Rekognition 'face collection' to store facial recognition data. Someday this will be automatically created with the CloudFormation template, but until that's possible, you need to use the AWS CLI to run the following command:
 
     aws rekognition create-collection --region us-east-1 --profile default --collection-id drupal-media-rekognition
 
