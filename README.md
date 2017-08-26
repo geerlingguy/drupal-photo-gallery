@@ -80,15 +80,13 @@ If you want to test the Rekognition data locally, you need to:
 
 Alternatively, you could create a separate Lambda function for testing (so your live site can still work with the production Lambda function).
 
-## Deploying to Production
-
-### DigitalOcean setup - LAMP Droplet for Drupal
+## DigitalOcean setup - LAMP Droplet for Drupal
 
 This project includes an Ansible playbook which creates a new DigitalOcean droplet, then installs everything on it to run the Drupal site at a publicly-accessible IP address (this is required for the Lambda function to be able to communicate back to the site with labels and faces).
 
 Please see the README file inside `scripts/ansible` for a detailed guide for building the Drupal server on DigitalOcean using Ansible.
 
-### AWS setup - S3, Lambda, and Rekognition
+## AWS setup - S3, Lambda, and Rekognition
 
 To allow AWS Lambda to call back to your Drupal site (so faces and labels can be integrated with your media entities), you must have Drupal running on a publicly-accessible URL. Therefore before any of the AWS integration for Rekognition can be tested, make sure you're running an installation of this site on a server with a publicly-accessible URL.
 
