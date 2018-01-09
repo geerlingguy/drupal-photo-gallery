@@ -12,7 +12,7 @@ An intelligent photo gallery built with [Drupal 8](https://www.drupal.org/8), Am
   - [Drupal Photo Gallery](https://github.com/geerlingguy/drupal-photo-gallery) project.
   - Blog posts with background:
     - [Building an Open Source Photo Gallery with Face and Object Recognition (Part 1)](https://dev.acquia.com/blog/building-an-open-source-photo-gallery-with-face-and-object-recognition-part-1/17/07/2017/18466)
-    - Part 2 (coming soon!)
+    - [Building an Open Source Photo Gallery with Face and Object Recognition (Part 2)](https://dev.acquia.com/blog/building-an-open-source-photo-gallery-with-face-and-object-recognition-part-2/31/08/2017/18666)
 
 ## Local setup
 
